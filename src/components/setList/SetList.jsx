@@ -23,7 +23,7 @@ const SetList = ({ onSearch }) => {
 
     useEffect(() => {
         if(cardsObject.nextPage){
-            getDraftData(cardsObject.nextPage)
+            getDraftData(cardsObject.nextPage, true)
         }else{
             onSearch(cardsObject.cards)
         }
@@ -32,9 +32,11 @@ const SetList = ({ onSearch }) => {
     function handleChange(event) {
         setChosenSetURI(event.target.value)
     }
-    function getDraftData(url = chosenSetURI) {
+    function getDraftData(url = chosenSetURI, recursed = false) {
+        const cleanedData = !recursed? [] : [...cardsObject.cards] ;
+
         fetch(url).then(response => response.json()).then(response => {
-            setCards({cards: [...cardsObject.cards, ...response.data], nextPage: response.next_page})
+            setCards({cards: [...cleanedData, ...response.data], nextPage: response.next_page})
         })
     }
 

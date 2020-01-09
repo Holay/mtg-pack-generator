@@ -28,6 +28,8 @@ function App() {
       // 7/8 rare 1/8 mythic
       // 10 common
       // 3 uncommon
+
+      //doing this to deep clone and modify the cardData freely for each pack
       const cardData = JSON.parse(JSON.stringify(cards))
 
       for (let i = 0; i < 10; i++) {
@@ -55,8 +57,8 @@ function App() {
 
       pack.forEach((card, cardIndex) => {
         result[`${1 + deckIndex}${cardIndex}`] = {
-          FaceURL: card.image_uris.png,
-          BackURL: CARD_BACK_URI,
+          FaceURL: card.image_uris? card.image_uris.png: card.card_faces[0].image_uris.png,
+          BackURL: card.image_uris ? CARD_BACK_URI : card.card_faces[1].image_uris.png,
           NumWidth: 1,
           NumHeight: 1,
           BackIsHidden: true,
@@ -153,8 +155,8 @@ function App() {
             CardID: Number(`${1 + deckIndex}${cardIndex}00`),
             CustomDeck:{
               [`${1 + deckIndex}${cardIndex}`]:{
-                FaceURL: card.image_uris.png,
-                BackURL: CARD_BACK_URI,
+                FaceURL: card.image_uris ? card.image_uris.png : card.card_faces[0].image_uris.png,
+                BackURL: card.image_uris ? CARD_BACK_URI : card.card_faces[1].image_uris.png,
                 NumWidth: 1,
                 NumHeight: 1,
                 BackIsHidden: true,

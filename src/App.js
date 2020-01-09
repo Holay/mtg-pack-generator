@@ -28,18 +28,24 @@ function App() {
       // 7/8 rare 1/8 mythic
       // 10 common
       // 3 uncommon
+      const cardData = JSON.parse(JSON.stringify(cards))
+
       for (let i = 0; i < 10; i++) {
-        pack.push(cards.commons[Math.floor(Math.random() * cards.commons.length)])
+        const index = Math.floor(Math.random() * cardData.commons.length)
+        pack.push(cardData.commons[index])
+        cardData.commons.splice(index,1)
       }
       for (let i = 0; i < 3; i++) {
-        pack.push(cards.uncommons[Math.floor(Math.random() * cards.uncommons.length)])
+        const index = Math.floor(Math.random() * cardData.uncommons.length)
+        pack.push(cardData.uncommons[index])
+        cardData.uncommons.splice(index,1)
       }
       if(Math.random() > 0.125){
-        pack.push(cards.rares[Math.floor(Math.random() * cards.rares.length)])
+        pack.push(cardData.rares[Math.floor(Math.random() * cardData.rares.length)])
       }else{
-        pack.push(cards.mythics[Math.floor(Math.random() * cards.mythics.length)])
+        pack.push(cardData.mythics[Math.floor(Math.random() * cardData.mythics.length)])
       }
-      pack.push(cards.lands[Math.floor(Math.random()*cards.lands.length)])
+      pack.push(cardData.lands[Math.floor(Math.random()*cardData.lands.length)])
 
       return pack
     }

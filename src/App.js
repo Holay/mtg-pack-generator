@@ -15,7 +15,6 @@ function App() {
       const uncommons = cards.filter(card => card.rarity === "uncommon");
       const rares = cards.filter(card => card.rarity === "rare");
       const mythics = cards.filter(card => card.rarity === "mythic");  
- 
       setCards({ lands, commons, uncommons, rares, mythics })
   }
 
@@ -44,10 +43,12 @@ function App() {
       }
       if(Math.random() > 0.125){
         pack.push(cardData.rares[Math.floor(Math.random() * cardData.rares.length)])
-      }else{
+      }else if(cardData.mythics.length>0){
         pack.push(cardData.mythics[Math.floor(Math.random() * cardData.mythics.length)])
       }
-      pack.push(cardData.lands[Math.floor(Math.random()*cardData.lands.length)])
+      if(cardData.lands.length >0){
+        pack.push(cardData.lands[Math.floor(Math.random()*cardData.lands.length)])
+      }
 
       return pack
     }

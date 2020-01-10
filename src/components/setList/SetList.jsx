@@ -16,7 +16,11 @@ const SetList = ({ onSearch }) => {
                 return response.json();
             })
             .then(({ data }) => {
-                const filteredData = data.filter(set => set.set_type === "expansion")
+                const filteredData = data.filter(set => set.set_type === "expansion" || set.set_type === "core" || set.set_type === "masters")
+                filteredData.sort((setA, setB)=>{
+                    if (setA.name === setB.name) return 0;
+                    return setA.name > setB.name? 1:-1;
+                })
                 setSets(filteredData)
             });
     }, []);

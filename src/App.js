@@ -2,20 +2,20 @@ import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { SetList } from "./components"
-import { CARD_BACK_URI } from "./config"
+import { CARD_BACK_URI, TOKEN_CARD_BACK_URI } from "./config"
 
 function App() {
   const [cards, setCards] = useState({})
   const [packCount, setPackCount] = useState(12)
   const [draftPacks, setDraftPacks] = useState("")
 
-  function updateShowcase(cards){
+  function updateShowcase({cards, tokens}){
       const lands = cards.filter(card => card.rarity === "common" && card.type_line.includes('Basic Land'))
       const commons = cards.filter(card => card.rarity === "common" && !card.type_line.includes('Basic Land'));
       const uncommons = cards.filter(card => card.rarity === "uncommon");
       const rares = cards.filter(card => card.rarity === "rare");
       const mythics = cards.filter(card => card.rarity === "mythic");  
-      setCards({ lands, commons, uncommons, rares, mythics })
+      setCards({ lands, commons, uncommons, rares, mythics, tokens })
   }
 
   useEffect(()=>{
@@ -30,6 +30,7 @@ function App() {
 
       //doing this to deep clone and modify the cardData freely for each pack
       const cardData = JSON.parse(JSON.stringify(cards))
+
 
       for (let i = 0; i < 10; i++) {
         const index = Math.floor(Math.random() * cardData.commons.length)
@@ -49,6 +50,9 @@ function App() {
       if(cardData.lands.length >0){
         pack.push(cardData.lands[Math.floor(Math.random()*cardData.lands.length)])
       }
+      if (cards.tokens.length > 0) {
+        pack.push(cards.tokens[Math.floor(Math.random() * cards.tokens.length)])
+      }
 
       return pack
     }
@@ -57,9 +61,12 @@ function App() {
       const result = {}
 
       pack.forEach((card, cardIndex) => {
+        
+        const cardBack = card.layout === "token"? TOKEN_CARD_BACK_URI:CARD_BACK_URI
+        
         result[`${1 + deckIndex}${cardIndex}`] = {
           FaceURL: card.image_uris? card.image_uris.png: card.card_faces[0].image_uris.png,
-          BackURL: card.image_uris ? CARD_BACK_URI : card.card_faces[1].image_uris.png,
+          BackURL: card.image_uris ? cardBack : card.card_faces[1].image_uris.png,
           NumWidth: 1,
           NumHeight: 1,
           BackIsHidden: true,
@@ -121,7 +128,9 @@ function App() {
           XmlUI: "",
           LuaScript: "",
           LuaScriptState: "",
-          ContainedObjects: pack.map((card, cardIndex) => ({
+          ContainedObjects: pack.map((card, cardIndex) => {
+            const cardBack = card.layout === "token" ? TOKEN_CARD_BACK_URI : CARD_BACK_URI
+            return ({
             Name:"CardCustom",
             Transform: {
               posX: 0,
@@ -157,7 +166,7 @@ function App() {
             CustomDeck:{
               [`${1 + deckIndex}${cardIndex}`]:{
                 FaceURL: card.image_uris ? card.image_uris.png : card.card_faces[0].image_uris.png,
-                BackURL: card.image_uris ? CARD_BACK_URI : card.card_faces[1].image_uris.png,
+                BackURL: card.image_uris ? cardBack : card.card_faces[1].image_uris.png,
                 NumWidth: 1,
                 NumHeight: 1,
                 BackIsHidden: true,
@@ -168,7 +177,7 @@ function App() {
             LuaScript: "",
             LuaScriptState: "",
           
-          })
+          })}
           )
 
         }))

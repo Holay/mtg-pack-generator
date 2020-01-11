@@ -9,13 +9,13 @@ function App() {
   const [packCount, setPackCount] = useState(12)
   const [draftPacks, setDraftPacks] = useState("")
 
-  function updateShowcase({cards, tokens}){
-      const lands = cards.filter(card => card.rarity === "common" && card.type_line.includes('Basic Land'))
-      const commons = cards.filter(card => card.rarity === "common" && !card.type_line.includes('Basic Land'));
+  function updateShowcase({cards, tokens=[], promos=[], masterpieces=[]}){
+      const lands = cards.filter(card => card.rarity === "common" && card.type_line.includes('Land'))
+      const commons = cards.filter(card => card.rarity === "common" && !card.type_line.includes('Land'));
       const uncommons = cards.filter(card => card.rarity === "uncommon");
       const rares = cards.filter(card => card.rarity === "rare");
       const mythics = cards.filter(card => card.rarity === "mythic");  
-      setCards({ lands, commons, uncommons, rares, mythics, tokens })
+      setCards({ lands, commons, uncommons, rares, mythics, tokens, promos, masterpieces })
   }
 
   useEffect(()=>{

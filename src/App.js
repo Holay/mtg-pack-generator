@@ -62,7 +62,7 @@ function App() {
 
       pack.forEach((card, cardIndex) => {
         
-        const cardBack = card.layout === "token"? TOKEN_CARD_BACK_URI:CARD_BACK_URI
+        const cardBack = card.layout === "token" || card.layout === "emblem" ? TOKEN_CARD_BACK_URI:CARD_BACK_URI
         
         result[`${1 + deckIndex}${cardIndex}`] = {
           FaceURL: card.image_uris? card.image_uris.png: card.card_faces[0].image_uris.png,

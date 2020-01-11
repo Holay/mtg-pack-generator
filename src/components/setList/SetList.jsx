@@ -9,6 +9,7 @@ const SetList = ({ onSearch }) => {
     const [chosenSetTokens, setChosenSetTokens]= useState([])
     const [cardsObject, setCards] = useState({ cards: [], hasMore: false});
     const [tokens, setTokens] = useState([])
+    const allowedSetTypes = ['core', 'expansion', 'masters', 'draft_innovation', 'commander']
 
     // Similar to componentDidMount and componentDidUpdate:
     useEffect(() => {
@@ -18,7 +19,9 @@ const SetList = ({ onSearch }) => {
                 return response.json();
             })
             .then(({ data }) => {
-                const filteredData = data.filter(set => set.set_type === "expansion" || set.set_type === "core" || set.set_type === "masters")
+                // console.log(new Set(data.map(set=>set.set_type)))
+                // console.log(data.filter(set => set.set_type === "promo" && set.parent_set_code))
+                const filteredData = data.filter(set => allowedSetTypes.includes(set.set_type))
                 const tokens = data.filter(set => set.set_type === "token")
                 filteredData.sort((setA, setB)=>{
                     if (setA.name === setB.name) return 0;

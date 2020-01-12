@@ -47,7 +47,17 @@ function App() {
       }else if(cardData.mythics.length>0){
         pack.push(cardData.mythics[Math.floor(Math.random() * cardData.mythics.length)])
       }
-      if(cardData.lands.length >0){
+      if(Math.random()<=0.0666){
+        // console.log('adding special card')
+        if(Math.random() <= 0.30 && cards.masterpieces.length>0){
+          // console.log('adding masterpiece')
+          pack.push(cards.masterpieces[Math.floor(Math.random() * cards.masterpieces.length)])
+        }else if(cards.promos.length > 0){
+          // console.log('adding promo')
+          pack.push(cards.promos[Math.floor(Math.random() * cards.promos.length)])
+        }
+      }else if(cardData.lands.length >0){
+        // console.log('no special card added')
         pack.push(cardData.lands[Math.floor(Math.random()*cardData.lands.length)])
       }
       if (cards.tokens.length > 0) {
@@ -130,6 +140,13 @@ function App() {
           LuaScriptState: "",
           ContainedObjects: pack.map((card, cardIndex) => {
             const cardBack = card.layout === "token" ? TOKEN_CARD_BACK_URI : CARD_BACK_URI
+            let cardName = card.name
+            if(card.set_type === "promo"){
+              cardName+= " - Promo";
+            }
+            if (card.set_type === "masterpiece") {
+              cardName += " - Masterpiece";
+            }
             return ({
             Name:"CardCustom",
             Transform: {
@@ -143,7 +160,7 @@ function App() {
               scaleY: 1,
               scaleZ: 1,
             },
-            Nickname: card.name,
+            Nickname: cardName,
             Description: "",
             GMNotes: "",
             ColorDiffuse: {

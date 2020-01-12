@@ -22,11 +22,12 @@ function App() {
 
     function makePack(){
       const pack = [];
-      // 15 cards
-      // basic land (or foil?)
+      // 16 cards
+      // basic land, promo replacing foil, or masterpiece
       // 7/8 rare 1/8 mythic
       // 10 common
       // 3 uncommon
+      // 1 token
 
       //doing this to deep clone and modify the cardData freely for each pack
       const cardData = JSON.parse(JSON.stringify(cards))
@@ -223,10 +224,8 @@ function App() {
   },[draftPacks])
 
   async function download() {
-  
-    // is an object and I wrote it to file as
-    // json
-    const fileName = "draft";
+    const setName = cards.commons[0].set_name;
+    const fileName = `${setName} draft`;
     const json = draftPacks
     const blob = new Blob([json], { type: 'application/json' });
     const href = await URL.createObjectURL(blob);
@@ -236,6 +235,8 @@ function App() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    setCards({})
+    setDraftPacks("")
   }
 
   return (
@@ -247,7 +248,7 @@ function App() {
         </p>
         <SetList onSearch={updateShowcase}/>
         {draftPacks && <button onClick={download}> Download for TTS </button>}
-        {/* <Showcase />  */}
+        {/* <Showcase cards={cards} />  */}
       </header>
     </div>
   );

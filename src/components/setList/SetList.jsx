@@ -21,8 +21,7 @@ const SetList = ({ onSearch }) => {
                 return response.json();
             })
             .then(({ data }) => {
-                const specialCards = data.filter(set => (set.set_type === "masterpiece" && set.parent_set_code) || (set.set_type === "promo" && set.parent_set_code))
-                // console.log(data.filter(set => set.set_type === "promo" && set.parent_set_code))
+                const specialCards = data.filter(set => (set.set_type === "masterpiece") || (set.set_type === "promo" && set.parent_set_code))
                 const filteredData = data.filter(set => allowedSetTypes.includes(set.set_type))
                 const tokens = data.filter(set => set.set_type === "token")
                 filteredData.sort((setA, setB)=>{
@@ -60,8 +59,11 @@ const SetList = ({ onSearch }) => {
         const chosenSetCode = sets.find(set => set.search_uri === chosenSet).code
         const setTokens = tokens.find(tokenSet => tokenSet.parent_set_code === chosenSetCode)
         const setPromo = specialCards.find(specialSet => specialSet.parent_set_code === chosenSetCode && specialSet.set_type === "promo")
-        const setMasterpiece = specialCards.find(specialSet => specialSet.parent_set_code === chosenSetCode && specialSet.set_type === "masterpiece")
-
+        let setMasterpiece = specialCards.find(specialSet => specialSet.parent_set_code === chosenSetCode && specialSet.set_type === "masterpiece")
+        //Special case for guild of ravnica mythic edition which does not have a parent_set_code
+        if (chosenSetCode === "grn"){
+            setMasterpiece = specialCards.find(specialSet => specialSet.code === "med")
+        }
         const result = {
             tokens: setTokens && await fetch(setTokens.search_uri).then(response => response.json()).then(response => {
                 return response.data

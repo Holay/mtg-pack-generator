@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react"
 import { API_BASE_URL } from "../../config"
+import "./SetList.scss"
 
+const selectStyle ={
+    margin: '20px 90px 0',
+    fontSize: '27px',
+    borderRadius: '20px',
+    fontFamily: 'Open Sans'
+}
 
 
 const SetList = ({ onSearch }) => {
     const [sets, setSets] = useState([]);
+    const [loading, setLoading] = useState(false);
     const [chosenSet, setChosenSet] = useState("")
     const [chosenSetSpecial, setChosenSetSpecial] = useState({tokens: [], promos: [], masterpieces: []})
     const [cardsObject, setCards] = useState({ cards: [], hasMore: false});
@@ -38,6 +46,8 @@ const SetList = ({ onSearch }) => {
         if(cardsObject.nextPage){
             getDraftData(cardsObject.nextPage, true)
         }else{
+            setLoading(false)
+
             onSearch({ cards: cardsObject.cards, tokens: chosenSetSpecial.tokens, promos: chosenSetSpecial.promos, masterpieces: chosenSetSpecial.masterpieces})
         }
     }, [ cardsObject ])
@@ -46,7 +56,7 @@ const SetList = ({ onSearch }) => {
         setChosenSet(event.target.value)
     }
     async function getDraftData(url = chosenSet, recursed = false) {
-        
+        setLoading(true)
         const cleanedData = !recursed? [] : [...cardsObject.cards] ;
         if(!recursed){
             await fetchSpecials()
@@ -81,11 +91,12 @@ const SetList = ({ onSearch }) => {
 
     return (
         <div>
-            <select onChange={handleChange}>
+            <select style={selectStyle} onChange={handleChange}>
                 <option value="null">Choose a set</option>
-                {sets.map((set, index) => <option key={index} value={set.search_uri}>{set.name}</option>)}
+                {sets.map((set, index) => <option className="set-select-option" key={index} value={set.search_uri}>{set.name}</option>)}
             </select>
-            {chosenSet && <button onClick={() => { getDraftData() }}>Run draft</button>}
+
+            {chosenSet && <button className={`run-draft-button ${loading ? "loading":"normal"}`}  onClick={() => { getDraftData() }}></button>}
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
+import logo from './mtg-logo.png';
 import './App.css';
 import { SetList, Showcase} from "./components"
 import { CARD_BACK_URI, TOKEN_CARD_BACK_URI } from "./config"
@@ -50,7 +50,7 @@ function App() {
       }
       if(Math.random()<=0.0666){
         // console.log('adding special card')
-        if(Math.random() <= 0.30 && cards.masterpieces.length>0){
+        if(Math.random() <= 0.15 && cards.masterpieces.length>0){
           // console.log('adding masterpiece')
           pack.push(cards.masterpieces[Math.floor(Math.random() * cards.masterpieces.length)])
         }else if(cards.promos.length > 0){
@@ -243,11 +243,17 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <p className="welcome-text">
+          Booster pack generator for tabletop simulator
         </p>
+        <div className="controls">
+
         <SetList onSearch={updateShowcase}/>
-        {draftPacks && <button onClick={download}> Download for TTS </button>}
+        {draftPacks && <button class="download-button" onClick={download}> Download </button>}
+        </div>
+        {draftPacks && <p className="showcase-intro">
+          Here is what you can expect to find in these packs: 
+        </p>}
         <Showcase cards={cards} /> 
       </header>
     </div>

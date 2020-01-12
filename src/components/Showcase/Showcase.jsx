@@ -15,7 +15,6 @@ const Showcase = ({ cards }) => {
         }
     }
     showCaseBlocks.reverse()
-    console.log(showCaseBlocks, 'normal result')
     const showcaseData = showCaseBlocks.filter(block=>block.cards.length>0).map((block, index) => {
         return (
             <div className="showcase-block" key={`${block.cardType}-${index}`}>

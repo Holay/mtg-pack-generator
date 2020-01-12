@@ -1,0 +1,85 @@
+.set-select{
+    width: 70px;
+    height: 40px;
+    border-radius: 30px;
+    margin: 0 20px;
+}
+
+.set-select, .set-select-option{
+  font-family: 'Open Sans', sans-serif;
+}
+
+$main: rgb(149, 184, 204);
+$secondary: #000000;
+button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  outline: none;
+  outline:none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius:40px;
+  background: #fff;
+  border: 2px solid $main;
+  color: black;
+  letter-spacing:1px;
+  text-shadow:0;
+  font-size: 12px;
+  font-weight:bold;
+  position:relative;
+  bottom: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  &:hover {
+    color:white;
+    background: $main;
+  }
+  &:active {
+    //letter-spacing: 2px;
+    letter-spacing: 2px ;
+  }
+
+}
+
+.run-draft-button::after{
+  content:"Get packs";
+}
+.loading {
+  width: 40px;
+  position:relative;
+  top: 5px;
+  border-color:$secondary;
+  border-width:3px;
+  font-size:0;
+  border-left-color:$main;
+  animation: rotating 2s 0.25s linear infinite;
+
+  &:after {
+    content:"";
+  }
+  &:hover {
+    color:$main;
+    background: #282c34;
+  }
+}
+.validate {
+  font-size:13px;
+  color: #282c34;
+  background: $main;
+  &:after {
+
+    content:"Done!";
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

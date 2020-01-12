@@ -1,0 +1,34 @@
+.showcase-cards{
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 15px;
+}
+.showcase-block{
+    margin: 0 10%;
+}
+
+.showcase-header{
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    margin-top: 15px;
+    font-size: 35px;;
+    font-family: 'Open Sans', sans-serif;
+
+}
+.showcase-header::before {
+        border-top: 2px solid #dfdfdf;
+        content:"";
+        margin: 0 auto; /* this centers the line to the full width specified */
+        position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+        top: 50%; left: 0; right: 0; bottom: 0;
+        width: 95%;
+        z-index: -1;
+    }
+
+.showcase-header span { 
+    /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
+    background: #282c34; 
+    padding: 0 15px; 
+}

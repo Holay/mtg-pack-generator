@@ -1,0 +1,23 @@
+.card{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+}
+
+.card-name{
+    margin-top: 0;
+}
+
+.card-image{
+    max-width: 80%;
+    border-radius: 20px;
+    transition: max-width 0.1s;
+
+}
+
+.card-image:hover{
+    max-width: 100%;
+    transition: max-width 0.1s;
+}
+
+
+

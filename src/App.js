@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { SetList } from "./components"
+import { SetList, Showcase} from "./components"
 import { CARD_BACK_URI, TOKEN_CARD_BACK_URI } from "./config"
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       const uncommons = cards.filter(card => card.rarity === "uncommon");
       const rares = cards.filter(card => card.rarity === "rare");
       const mythics = cards.filter(card => card.rarity === "mythic");  
-      setCards({ lands, commons, uncommons, rares, mythics, tokens, promos, masterpieces })
+    setCards({ tokens, promos,lands, commons, uncommons, rares, mythics, masterpieces })
   }
 
   useEffect(()=>{
@@ -248,7 +248,7 @@ function App() {
         </p>
         <SetList onSearch={updateShowcase}/>
         {draftPacks && <button onClick={download}> Download for TTS </button>}
-        {/* <Showcase cards={cards} />  */}
+        <Showcase cards={cards} /> 
       </header>
     </div>
   );

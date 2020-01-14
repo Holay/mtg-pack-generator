@@ -48,12 +48,12 @@ function App() {
       }else if(cardData.mythics.length>0){
         pack.push(cardData.mythics[Math.floor(Math.random() * cardData.mythics.length)])
       }
-      if(Math.random()<=0.0666){
+      if (Math.random() <= 0.0666 && cards.promos.length > 0){
         // console.log('adding special card')
         if(Math.random() <= 0.15 && cards.masterpieces.length>0){
           // console.log('adding masterpiece')
           pack.push(cards.masterpieces[Math.floor(Math.random() * cards.masterpieces.length)])
-        }else if(cards.promos.length > 0){
+        }else {
           // console.log('adding promo')
           pack.push(cards.promos[Math.floor(Math.random() * cards.promos.length)])
         }
@@ -63,6 +63,7 @@ function App() {
       }
       if (cards.tokens.length > 0) {
         pack.push(cards.tokens[Math.floor(Math.random() * cards.tokens.length)])
+
       }
 
       return pack
@@ -238,7 +239,7 @@ function App() {
 
   async function download() {
     const setName = cards.commons[0].set_name;
-    const fileName = `${setName} draft`;
+    const fileName = `${setName} booster packs`;
     const json = draftPacks
     const blob = new Blob([json], { type: 'application/json' });
     const href = await URL.createObjectURL(blob);

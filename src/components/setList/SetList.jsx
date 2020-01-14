@@ -6,7 +6,7 @@ const selectStyle ={
     margin: '20px 90px 0',
     fontSize: '27px',
     borderRadius: '20px',
-    fontFamily: 'Open Sans'
+    fontFamily: 'Open Sans',
 }
 
 

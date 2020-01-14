@@ -162,7 +162,7 @@ function App() {
               scaleZ: 1,
             },
             Nickname: cardName,
-            Description: "",
+            Description: `$${card.prices.usd || card.prices.usd_foil || 0}`,
             GMNotes: "",
             ColorDiffuse: {
               r: 0.713235259,

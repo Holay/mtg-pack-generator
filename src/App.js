@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import logo from './mtg-logo.png';
 import './App.css';
-import { SetList, Showcase} from "./components"
+import { SetList, Showcase, StickyNav} from "./components"
 import { CARD_BACK_URI, TOKEN_CARD_BACK_URI } from "./config"
 
 function App() {
@@ -104,9 +104,9 @@ function App() {
         ObjectStates: packs.map((pack, deckIndex) => ({
           Name: "Deck",
           Transform: {
-            posX: -4*deckIndex,
+            posX: -4*calculatePosition(deckIndex, 'X'),
             posY: 1,
-            posZ: 1,
+            posZ: -4 * calculatePosition(deckIndex, "Z"),
             rotX: 0,
             rotY: 180,
             rotZ: 180,
@@ -223,6 +223,19 @@ function App() {
 
   },[draftPacks])
 
+  function updatePackCount(newCount){
+    setPackCount(newCount)
+  }
+
+  function calculatePosition(index, coordinate){
+    if(coordinate === 'X'){
+      return index % 6
+    }
+    if (coordinate === 'Z') {
+      return Math.floor(index/6)
+    }
+  }
+
   async function download() {
     const setName = cards.commons[0].set_name;
     const fileName = `${setName} draft`;
@@ -241,6 +254,7 @@ function App() {
 
   return (
     <div className="App">
+      <StickyNav packCount={packCount} updatePackCount={updatePackCount}/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p className="welcome-text">

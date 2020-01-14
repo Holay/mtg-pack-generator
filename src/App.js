@@ -32,39 +32,40 @@ function App() {
       //doing this to deep clone and modify the cardData freely for each pack
       const cardData = JSON.parse(JSON.stringify(cards))
 
+      if (cards.tokens.length > 0) {
+        pack.push(cards.tokens[Math.floor(Math.random() * cards.tokens.length)])
 
-      for (let i = 0; i < 10; i++) {
-        const index = Math.floor(Math.random() * cardData.commons.length)
-        pack.push(cardData.commons[index])
-        cardData.commons.splice(index,1)
+      }
+      if (Math.random() <= 0.0666 && cards.promos.length > 0) {
+        // console.log('adding special card')
+        if (Math.random() <= 0.15 && cards.masterpieces.length > 0) {
+          // console.log('adding masterpiece')
+          pack.push(cards.masterpieces[Math.floor(Math.random() * cards.masterpieces.length)])
+        } else {
+          // console.log('adding promo')
+          pack.push(cards.promos[Math.floor(Math.random() * cards.promos.length)])
+        }
+      } else if (cardData.lands.length > 0) {
+        // console.log('no special card added')
+        pack.push(cardData.lands[Math.floor(Math.random() * cardData.lands.length)])
+      }
+      if (Math.random() > 0.125) {
+        pack.push(cardData.rares[Math.floor(Math.random() * cardData.rares.length)])
+      } else if (cardData.mythics.length > 0) {
+        pack.push(cardData.mythics[Math.floor(Math.random() * cardData.mythics.length)])
       }
       for (let i = 0; i < 3; i++) {
         const index = Math.floor(Math.random() * cardData.uncommons.length)
         pack.push(cardData.uncommons[index])
         cardData.uncommons.splice(index,1)
       }
-      if(Math.random() > 0.125){
-        pack.push(cardData.rares[Math.floor(Math.random() * cardData.rares.length)])
-      }else if(cardData.mythics.length>0){
-        pack.push(cardData.mythics[Math.floor(Math.random() * cardData.mythics.length)])
+      for (let i = 0; i < 10; i++) {
+        const index = Math.floor(Math.random() * cardData.commons.length)
+        pack.push(cardData.commons[index])
+        cardData.commons.splice(index, 1)
       }
-      if (Math.random() <= 0.0666 && cards.promos.length > 0){
-        // console.log('adding special card')
-        if(Math.random() <= 0.15 && cards.masterpieces.length>0){
-          // console.log('adding masterpiece')
-          pack.push(cards.masterpieces[Math.floor(Math.random() * cards.masterpieces.length)])
-        }else {
-          // console.log('adding promo')
-          pack.push(cards.promos[Math.floor(Math.random() * cards.promos.length)])
-        }
-      }else if(cardData.lands.length >0){
-        // console.log('no special card added')
-        pack.push(cardData.lands[Math.floor(Math.random()*cardData.lands.length)])
-      }
-      if (cards.tokens.length > 0) {
-        pack.push(cards.tokens[Math.floor(Math.random() * cards.tokens.length)])
 
-      }
+
 
       return pack
     }

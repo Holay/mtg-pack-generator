@@ -9,7 +9,7 @@ const Showcase = ({ cards }) => {
         if (cards[cardType]) {
             const block = {
                 header: cardType,
-                cards: cards[cardType].map((card, index) => <Card card={card} key={index} />)
+                cards: cards[cardType].map((card, index) => <Card card={card} key={`${card.name}-${index}`} />)
             }
             showCaseBlocks.push(block)
         }

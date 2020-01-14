@@ -1,5 +1,6 @@
 import React from 'react';
 import "./StickyNav.scss"
+import holayLogo from "../../Holay.png"
 
 const StickyNav = ({ packCount, updatePackCount }) => {
     const numberArray = []
@@ -11,7 +12,7 @@ const StickyNav = ({ packCount, updatePackCount }) => {
     }
     return (
         <div className="nav">
-            <div>MTG pack generator</div>
+            <div><img className="holay-logo" src={holayLogo} alt="Holay"></img></div>
             <div>Made by Mateo Penagos (<a href="https://twitter.com/Holay63" target="_blank" rel="noopener noreferrer">holay</a>) </div>
             <div className="pack-count-container">
                 <span>Booster pack count: </span>

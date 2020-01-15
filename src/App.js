@@ -260,7 +260,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p className="welcome-text">
-          Booster pack generator for tabletop simulator
+          Booster pack generator for <a className="tabletop-link" href="https://www.tabletopsimulator.com/" target="_blank" rel="noopener noreferrer">tabletop simulator</a>
         </p>
         <div className="controls">
 

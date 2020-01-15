@@ -24,6 +24,12 @@
   color: #61dafb;
 }
 
+.tabletop-link{
+  text-decoration: none;
+  color: inherit; 
+  font-weight: 700;
+}
+
 .showcase-intro{
   margin-top: 30px;
   width: 61%;

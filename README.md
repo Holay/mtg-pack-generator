@@ -1,7 +1,7 @@
 
 # Magic the gathering booster pack generator
 
-This app was made mostly to learn/practice react hooks. it is a mtg booster pack generator meant to be used with Tabletop Simulator.
+This app was made mostly to learn/practice react hooks. it is a mtg booster pack generator meant to be used with Tabletop Simulator. being hosted in heroku https://mtg-pack-generator.herokuapp.com/
 
 ## things to note:
 

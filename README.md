@@ -1,68 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Magic the gathering booster pack generator
 
-In the project directory, you can run:
+This app was made mostly to learn/practice react hooks. it is a mtg booster pack generator meant to be used with Tabletop Simulator.
 
-### `npm start`
+## things to note:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- i could not make a card be "foil" in TTS so i replaced the foil chance for a promo chance, with a slightly lower chance of appearing.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- When viewing the cards in the set showcase you can click double sided cards to see the other side of the card
 
-### `npm test`
+- The default number of booster packs generated is 12, if you want to change this you can do so with the drop-down on the top right but you need to do it before clicking "Get packs"
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- the tokens use a different card back to tell them apart from normal cards easily, so when you load the packs you will see only the token card back on top of all the packs instead of the normal MTG card back because the token is on the back of the pack
 
-### `npm run build`
+- if you hold your mouse over a single card in game you will see the price of the card according to scryfall ( at the moment the packs were generated )
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## how to use it:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. Pick the amount of boosters you want, or leave it at 12 which is the default
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. pick the set you wish to draft
 
-### `npm run eject`
+3. click get packs
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. click download
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. save the file to you TTS saved objects folder
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+6. load up in TTS and enjoy!

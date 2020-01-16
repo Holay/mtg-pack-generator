@@ -13,7 +13,7 @@ const StickyNav = ({ packCount, updatePackCount }) => {
     return (
         <div className="nav">
             <div><img className="holay-logo" src={holayLogo} alt="Holay"></img></div>
-            <div>Made by Mateo Penagos (<a href="https://twitter.com/Holay63" target="_blank" rel="noopener noreferrer">holay</a>) </div>
+            <div>Made by Mateo Penagos (<a href="https://steamcommunity.com/id/holay/" target="_blank" rel="noopener noreferrer">holay</a>) </div>
             <div className="pack-count-container">
                 <span>Booster pack count: </span>
                 <select className="pack-count-dropdown" value={packCount} onChange={handleChange}>

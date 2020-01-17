@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import logo from './mtg-logo.png';
 import './App.css';
-import { SetList, Showcase, StickyNav} from "./components"
+import { SetList, Showcase, StickyNav, Footer} from "./components"
 import { CARD_BACK_URI, TOKEN_CARD_BACK_URI } from "./config"
 
 function App() {
@@ -272,6 +272,9 @@ function App() {
         </p>}
         <Showcase cards={cards} /> 
       </header>
+      <Footer>
+        <span>This booster pack generator is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC</span>
+      </Footer>
     </div>
   );
 }

@@ -15,16 +15,20 @@ This app was made mostly to learn/practice react hooks. it is a mtg booster pack
 
 - if you hold your mouse over a single card in game you will see the price of the card according to scryfall ( at the moment the packs were generated )
 
+- If a certain set does not have images for the booster bags they will default to a black bordered version of the Alpha packs
+
 ## how to use it:
 
 1. Pick the amount of boosters you want, or leave it at 12 which is the default
 
 2. pick the set you wish to draft
 
-3. click get packs
+3. Choose whether or not you want the cards to be in a booster bag by toggling the checkbox in the upper right corner
 
-4. click download
+4. click get packs
 
-5. save the file to you TTS saved objects folder
+5. click download
 
-6. load up in TTS and enjoy!
+6. save the file to you TTS saved objects folder
+
+7. load up in TTS and enjoy!

@@ -216,7 +216,7 @@ function App() {
               posZ: -6 * calculatePosition(index, "Z"),
               rotX: 0,
               rotY: 180,
-              rotZ: 180,
+              rotZ: 0,
               scaleX: 1,
               scaleY: 1,
               scaleZ: 1,

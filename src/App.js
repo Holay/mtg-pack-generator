@@ -107,6 +107,163 @@ function App() {
       return result
     }
 
+    function generateTTSPacks(packs){
+      const TTSPacks = packs.map((pack, deckIndex) => ({
+        Name: "Deck",
+        Transform: {
+          posX: -4 * calculatePosition(deckIndex, 'X'),
+          posY: 1,
+          posZ: -4 * calculatePosition(deckIndex, "Z"),
+          rotX: 0,
+          rotY: 180,
+          rotZ: 180,
+          scaleX: 1,
+          scaleY: 1,
+          scaleZ: 1,
+        },
+        Nickname: "",
+        Description: "",
+        GMNotes: "",
+        ColorDiffuse: {
+          r: 0.713235259,
+          g: 0.713235259,
+          b: 0.713235259
+        },
+        Locked: false,
+        Grid: true,
+        Snap: true,
+        IgnoreFoW: false,
+        Autoraise: true,
+        Sticky: true,
+        Tooltip: true,
+        GridProjection: false,
+        HideWhenFaceDown: true,
+        Hands: false,
+        SidewaysCard: false,
+        DeckIDs: pack.map((card, cardIndex) => Number(`${1 + deckIndex}${cardIndex}00`)),
+
+        CustomDeck: generateCustomDeckObject(deckIndex, pack),
+        XmlUI: "",
+        LuaScript: "",
+        LuaScriptState: "",
+        ContainedObjects: pack.map((card, cardIndex) => {
+          const cardBack = card.set_type === "token" || card.layout === "emblem" ? TOKEN_CARD_BACK_URI : CARD_BACK_URI
+          let cardName = card.name
+          if (card.set_type === "promo") {
+            cardName += " - Promo";
+          }
+          if (card.set_type === "masterpiece") {
+            cardName += " - Masterpiece";
+          }
+          return ({
+            Name: "CardCustom",
+            Transform: {
+              posX: 0,
+              posY: 0,
+              posZ: 0,
+              rotX: 0,
+              rotY: 180,
+              rotZ: 180,
+              scaleX: 1,
+              scaleY: 1,
+              scaleZ: 1,
+            },
+            Nickname: cardName,
+            Description: `$${card.prices.usd || card.prices.usd_foil || 0}`,
+            GMNotes: "",
+            ColorDiffuse: {
+              r: 0.713235259,
+              g: 0.713235259,
+              b: 0.713235259
+            },
+            Locked: false,
+            Grid: true,
+            Snap: true,
+            IgnoreFoW: false,
+            Autoraise: true,
+            Sticky: true,
+            Tooltip: true,
+            GridProjection: false,
+            HideWhenFaceDown: true,
+            Hands: true,
+            SidewaysCard: false,
+            CardID: Number(`${1 + deckIndex}${cardIndex}00`),
+            CustomDeck: {
+              [`${1 + deckIndex}${cardIndex}`]: {
+                FaceURL: card.image_uris ? card.image_uris.png : card.card_faces[0].image_uris.png,
+                BackURL: card.image_uris ? cardBack : card.card_faces[1].image_uris.png,
+                NumWidth: 1,
+                NumHeight: 1,
+                BackIsHidden: true,
+                UniqueBack: false
+              }
+            },
+            XmlUI: "",
+            LuaScript: "",
+            LuaScriptState: "",
+
+          })
+        }
+        )
+
+      }))
+      if(boosterPackaging){
+        return TTSPacks.map((pack, index)=>(
+          {
+            Name: 'Custom_Model_Bag',
+            Transform: {
+              posX: -6 * calculatePosition(index, 'X'),
+              posY: 1,
+              posZ: -6 * calculatePosition(index, "Z"),
+              rotX: 0,
+              rotY: 180,
+              rotZ: 180,
+              scaleX: 1,
+              scaleY: 1,
+              scaleZ: 1,
+            },
+            Nickname: "",
+            Description: "",
+            GMNotes: "",
+            ColorDiffuse: {
+              r: 1.0,
+              g: 1.0,
+              b: 1.0
+            },
+            Locked: false,
+            Grid: true,
+            Snap: true,
+            IgnoreFoW: false,
+            Autoraise: true,
+            Sticky: true,
+            Tooltip: true,
+            GridProjection: false,
+            HideWhenFaceDown: false,
+            Hands: false,
+            MaterialIndex: -1,
+            MeshIndex: -1,
+            CustomMesh: {
+              MeshURL: 'http://pastebin.com/raw/PqfGKtKR',
+              DiffuseURL: BOOSTER_ARTS[code]? BOOSTER_ARTS[code][Math.floor(Math.random() * BOOSTER_ARTS[code].length)] : BOOSTER_ARTS['default'][0],
+              NormalURL: 'http://i.imgur.com/pEN77ux.png',
+              ColliderURL: "",
+              Convex: true,
+              MaterialIndex: 0,
+              TypeIndex: 6,
+              CastShadows: true
+            },
+            XmlUI: "",
+            LuaScript: "",
+            LuaScriptState: "",
+            ContainedObjects: [pack],
+            GUID: 'ae1ee7'
+          }
+        ))
+      }else{
+        return TTSPacks   
+      }
+    }
+
     function formatForTTS(packs) {
       const formattedPacks = {
         SaveName: "",
@@ -121,105 +278,7 @@ function App() {
         XmlUI: "",
         LuaScript: "",
         LuaScriptState: "",
-        ObjectStates: packs.map((pack, deckIndex) => ({
-          Name: "Deck",
-          Transform: {
-            posX: -4 * calculatePosition(deckIndex, 'X'),
-            posY: 1,
-            posZ: -4 * calculatePosition(deckIndex, "Z"),
-            rotX: 0,
-            rotY: 180,
-            rotZ: 180,
-            scaleX: 1,
-            scaleY: 1,
-            scaleZ: 1,
-          },
-          Nickname: "",
-          Description: "",
-          GMNotes: "",
-          ColorDiffuse: {
-            r: 0.713235259,
-            g: 0.713235259,
-            b: 0.713235259
-          },
-          Locked: false,
-          Grid: true,
-          Snap: true,
-          IgnoreFoW: false,
-          Autoraise: true,
-          Sticky: true,
-          Tooltip: true,
-          GridProjection: false,
-          HideWhenFaceDown: true,
-          Hands: false,
-          SidewaysCard: false,
-          DeckIDs: pack.map((card, cardIndex) => Number(`${1 + deckIndex}${cardIndex}00`)),
-
-          CustomDeck: generateCustomDeckObject(deckIndex, pack),
-          XmlUI: "",
-          LuaScript: "",
-          LuaScriptState: "",
-          ContainedObjects: pack.map((card, cardIndex) => {
-            const cardBack = card.set_type === "token" || card.layout === "emblem" ? TOKEN_CARD_BACK_URI : CARD_BACK_URI
-            let cardName = card.name
-            if (card.set_type === "promo") {
-              cardName += " - Promo";
-            }
-            if (card.set_type === "masterpiece") {
-              cardName += " - Masterpiece";
-            }
-            return ({
-              Name: "CardCustom",
-              Transform: {
-                posX: 0,
-                posY: 0,
-                posZ: 0,
-                rotX: 0,
-                rotY: 180,
-                rotZ: 180,
-                scaleX: 1,
-                scaleY: 1,
-                scaleZ: 1,
-              },
-              Nickname: cardName,
-              Description: `$${card.prices.usd || card.prices.usd_foil || 0}`,
-              GMNotes: "",
-              ColorDiffuse: {
-                r: 0.713235259,
-                g: 0.713235259,
-                b: 0.713235259
-              },
-              Locked: false,
-              Grid: true,
-              Snap: true,
-              IgnoreFoW: false,
-              Autoraise: true,
-              Sticky: true,
-              Tooltip: true,
-              GridProjection: false,
-              HideWhenFaceDown: true,
-              Hands: true,
-              SidewaysCard: false,
-              CardID: Number(`${1 + deckIndex}${cardIndex}00`),
-              CustomDeck: {
-                [`${1 + deckIndex}${cardIndex}`]: {
-                  FaceURL: card.image_uris ? card.image_uris.png : card.card_faces[0].image_uris.png,
-                  BackURL: card.image_uris ? cardBack : card.card_faces[1].image_uris.png,
-                  NumWidth: 1,
-                  NumHeight: 1,
-                  BackIsHidden: true,
-                  UniqueBack: false
-                }
-              },
-              XmlUI: "",
-              LuaScript: "",
-              LuaScriptState: "",
-
-            })
-          }
-          )
-
-        }))
+        ObjectStates: generateTTSPacks(packs)
       }
 
       return formattedPacks;

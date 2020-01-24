@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './mtg-logo.png';
 import './App.css';
 import { SetList, Showcase, StickyNav, Footer } from "./components"
-import { CARD_BACK_URI, TOKEN_CARD_BACK_URI } from "./config"
+import { CARD_BACK_URI, TOKEN_CARD_BACK_URI, BOOSTER_ARTS } from "./config"
 
 function App() {
 
@@ -19,6 +19,7 @@ function App() {
   const [packCount, setPackCount] = useState(12)
   const [draftPacks, setDraftPacks] = useState("")
   const [imageIndex, setImageIntex] = useState(Math.floor(Math.random()*backgroundImages.length))
+  const [code, setCode] = useState('');
 
   function updateShowcase({ cards, tokens = [], promos = [], masterpieces = [] }) {
     const lands = cards.filter(card => card.rarity === "common" && card.type_line.includes('Land'))
@@ -26,7 +27,8 @@ function App() {
     const uncommons = cards.filter(card => card.rarity === "uncommon");
     const rares = cards.filter(card => card.rarity === "rare");
     const mythics = cards.filter(card => card.rarity === "mythic");
-    setCards({ tokens, promos, lands, commons, uncommons, rares, mythics, masterpieces })
+    setCards({ tokens, promos, lands, commons, uncommons, rares, mythics, masterpieces})
+    commons[0] && setCode(commons[0].set)
   }
 
   useEffect(() => {

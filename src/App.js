@@ -18,7 +18,8 @@ function App() {
   const [cards, setCards] = useState({})
   const [packCount, setPackCount] = useState(12)
   const [draftPacks, setDraftPacks] = useState("")
-  const [imageIndex, setImageIntex] = useState(Math.floor(Math.random()*backgroundImages.length))
+  const [imageIndex, setImageIndex] = useState(Math.floor(Math.random()*backgroundImages.length))
+  const [boosterPackaging, setBoosterPackaging] = useState(false);
   const [code, setCode] = useState('');
 
   function updateShowcase({ cards, tokens = [], promos = [], masterpieces = [] }) {
@@ -29,6 +30,10 @@ function App() {
     const mythics = cards.filter(card => card.rarity === "mythic");
     setCards({ tokens, promos, lands, commons, uncommons, rares, mythics, masterpieces})
     commons[0] && setCode(commons[0].set)
+  }
+
+  function toggleBoosterPackaging(event){
+    setBoosterPackaging(!boosterPackaging)
   }
 
   useEffect(() => {
@@ -270,7 +275,7 @@ function App() {
 
   return (
     <div className="App">
-      <StickyNav packCount={packCount} updatePackCount={updatePackCount} />
+      <StickyNav packCount={packCount} updatePackCount={updatePackCount} toggleBoosterPackaging={toggleBoosterPackaging} boosterPackaging={boosterPackaging}/>
       <header className="App-header">
 
         <div className="cover-image" style={{backgroundImage: `url(${backgroundImages[imageIndex]})`}}>

@@ -25,3 +25,13 @@
     border-radius: 20%;
     margin: 0 10px;
 }
+
+.controls-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.toggle-label{
+    margin-right: 50px;
+}
+

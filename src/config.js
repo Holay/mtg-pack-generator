@@ -25,10 +25,10 @@ export const BOOSTER_ARTS = {
     bbd: ['https://i.imgur.com/EidtjcP.jpg', 'https://i.imgur.com/veup7uh.jpg', 'https://i.imgur.com/t2PhmkS.jpg'],
     ogw: ['https://i.imgur.com/DypxOSz.jpg', 'https://i.imgur.com/vJ5NgV9.jpg', 'https://i.imgur.com/BJb3zJb.jpg', 'https://i.imgur.com/bKuby0K.jpg'],
     default: ['https://i.imgur.com/9YaMle6.png'],
-    arn: ['https://i.imgur.com/r0msi2X.png'],
-    atq: ['https://i.imgur.com/S5Hofif.png'],
-    leg: ['https://i.imgur.com/Abl8g33.png'],
-    fem: ['https://i.imgur.com/QqbmZ9G.png'],
+    arn: ['https://i.imgur.com/G0iGZel.png'],
+    atq: ['https://i.imgur.com/oID833g.png'],
+    leg: ['https://i.imgur.com/ve2LRFH.png'],
+    fem: ['https://i.imgur.com/vJJX0V1.png'],
     chr: ['https://i.imgur.com/vFJgCFL.png', 'https://i.imgur.com/8pt82QN.png'],
     hml: ['https://i.imgur.com/lXcUsE9.png'],
     ice: [ 'https://i.imgur.com/6pDbvqF.png' ],
@@ -105,7 +105,10 @@ export const BOOSTER_ARTS = {
     shm: ['https://i.imgur.com/bgcEu0p.png'],
     ala: ['https://i.imgur.com/TpxbBoe.png'],
     tsp: ['https://i.imgur.com/BzJVQXY.png'],
-    zen: ['https://i.imgur.com/muTfcLJ.png']
+    zen: ['https://i.imgur.com/muTfcLJ.png'],
+    lea: ['https://i.imgur.com/Mj38OXm.png'],
+    drk: ['https://i.imgur.com/RLk1RQx.png'],
+
 
     
     

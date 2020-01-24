@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './mtg-logo.png';
 import './App.css';
 import { SetList, Showcase, StickyNav, Footer } from "./components"
 import { CARD_BACK_URI, TOKEN_CARD_BACK_URI, BOOSTER_ARTS } from "./config"
@@ -345,7 +344,7 @@ function App() {
         <div className="controls">
 
           <SetList onSearch={updateShowcase} />
-          {draftPacks && <button class="download-button" onClick={download}> Download </button>}
+          {draftPacks && <button className="download-button" onClick={download}> Download </button>}
         </div>
         </div>
         {draftPacks && <p className="showcase-intro">

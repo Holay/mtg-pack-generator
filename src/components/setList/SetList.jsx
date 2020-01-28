@@ -31,17 +31,17 @@ const SetList = ({ onSearch }) => {
             .then(({ data }) => {
                 const specialCards = data.filter(set => (set.set_type === "masterpiece") || (set.set_type === "promo" && set.parent_set_code))
                 const filteredData = data.filter(set => allowedSetTypes.includes(set.set_type))
+                //code checking
+                // console.log(filteredData.map(set=>({name:set.name, code: set.code})).sort((A,B) => {
+                //     if(A.name > B.name){
+                //         return 1
+                //     }
+                //     else if (A.name<B.name){
+                //         return -1
+                //     }
+                //     return 0
+                // }))
 
-                console.log(filteredData.map(set=>({name:set.name, code: set.code})).sort((A,B) => {
-                    if(A.name > B.name){
-                        return 1
-                    }
-                    else if (A.name<B.name){
-                        return -1
-                    }
-                    return 0
-                }))
-                
                 const tokens = data.filter(set => set.set_type === "token")
                 filteredData.sort((setA, setB)=>{
                     if (setA.name === setB.name) return 0;

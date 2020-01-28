@@ -109,7 +109,8 @@ export const BOOSTER_ARTS = {
     lea: ['https://i.imgur.com/Mj38OXm.png'],
     drk: ['https://i.imgur.com/RLk1RQx.png'],
     bfz: ['https://i.imgur.com/zw3PLOz.png'],
-    emn: ['https://i.imgur.com/Y4D7mrV.png']
+    emn: ['https://i.imgur.com/Y4D7mrV.png'],
+    vma: ['https://i.imgur.com/UlWqlQG.png', 'https://i.imgur.com/M6rIZqO.png']
 
     
     

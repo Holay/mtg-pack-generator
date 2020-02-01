@@ -14,7 +14,8 @@ var style = {
     justifyContent: 'center',
     backgroundColor: '#1b1919',
     color: 'white',
-    fontSize: 'small'
+    fontSize: 'small',
+    zIndex: 100
 }
 
 var phantom = {

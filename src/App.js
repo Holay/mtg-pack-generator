@@ -66,9 +66,9 @@ function App() {
         // console.log('no special card added')
         pack.push(cardData.lands[Math.floor(Math.random() * cardData.lands.length)])
       }
-      if (Math.random() > 0.125 || cardData.mythics.length === 0) {
+      if ((Math.random() > 0.125 || cardData.mythics.length === 0) && cardData.rares.length > 0) {
         pack.push(cardData.rares[Math.floor(Math.random() * cardData.rares.length)])
-      } else {
+      } else if (cardData.mythics.length > 0) {
         pack.push(cardData.mythics[Math.floor(Math.random() * cardData.mythics.length)])
       }
       for (let i = 0; i < 3; i++) {
@@ -81,7 +81,6 @@ function App() {
         pack.push(cardData.commons[index])
         cardData.commons.splice(index, 1)
       }
-
 
 
       return pack

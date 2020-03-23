@@ -18,7 +18,9 @@ const SetList = ({ onSearch }) => {
     const [cardsObject, setCards] = useState({ cards: [], hasMore: false});
     const [tokens, setTokens] = useState([])
     const [specialCards, setSpecialCards] = useState([])
-    const allowedSetTypes = ['core', 'expansion', 'masters', 'draft_innovation']
+    const allowedSetTypes = ['core', 'expansion', 'masters', 'draft_innovation'];
+    const allowedSpecialSets = ['mb1'];
+    const removedFromList = ['fmb1'];
 
 
     // Similar to componentDidMount and componentDidUpdate:
@@ -29,9 +31,9 @@ const SetList = ({ onSearch }) => {
                 return response.json();
             })
             .then(({ data }) => {
-                const specialCards = data.filter(set => (set.set_type === "masterpiece") || (set.set_type === "promo" && set.parent_set_code))
-                const filteredData = data.filter(set => allowedSetTypes.includes(set.set_type))
-                //code checking
+                const specialCards = data.filter(set => (set.set_type === "masterpiece") || (set.set_type === "promo" && set.parent_set_code) || removedFromList.includes(set.code))
+                const filteredData = data.filter(set => ((allowedSetTypes.includes(set.set_type) || allowedSpecialSets.includes(set.code)) && !removedFromList.includes(set.code)))
+                // code checking
                 // console.log(filteredData.map(set=>({name:set.name, code: set.code})).sort((A,B) => {
                 //     if(A.name > B.name){
                 //         return 1
@@ -58,7 +60,6 @@ const SetList = ({ onSearch }) => {
             getDraftData(cardsObject.nextPage, true)
         }else{
             setLoading(false)
-
             onSearch({ cards: cardsObject.cards, tokens: chosenSetSpecial.tokens, promos: chosenSetSpecial.promos, masterpieces: chosenSetSpecial.masterpieces})
         }
     }, [ cardsObject ])
@@ -79,11 +80,15 @@ const SetList = ({ onSearch }) => {
     async function fetchSpecials(){
         const chosenSetCode = sets.find(set => set.search_uri === chosenSet).code
         const setTokens = tokens.find(tokenSet => tokenSet.parent_set_code === chosenSetCode)
-        const setPromo = specialCards.find(specialSet => specialSet.parent_set_code === chosenSetCode && specialSet.set_type === "promo")
+        let setPromo = specialCards.find(specialSet => specialSet.parent_set_code === chosenSetCode && specialSet.set_type === "promo")
         let setMasterpiece = specialCards.find(specialSet => specialSet.parent_set_code === chosenSetCode && specialSet.set_type === "masterpiece")
         //Special case for guild of ravnica mythic edition which does not have a parent_set_code
         if (chosenSetCode === "grn"){
             setMasterpiece = specialCards.find(specialSet => specialSet.code === "med")
+        }
+        //Special case for mystery booster foils which are separated into another set
+        if (chosenSetCode === "mb1"){
+            setPromo = specialCards.find(specialSet => specialSet.code === "fmb1")
         }
         const result = {
             tokens: setTokens && await fetch(setTokens.search_uri).then(response => response.json()).then(response => {

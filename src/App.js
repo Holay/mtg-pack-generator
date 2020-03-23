@@ -15,11 +15,13 @@ function App() {
   ]
 
   const [cards, setCards] = useState({})
+  const [specialSetCards, setSpecialSetCards] = useState({})
   const [packCount, setPackCount] = useState(12)
   const [draftPacks, setDraftPacks] = useState("")
   const [imageIndex, setImageIndex] = useState(Math.floor(Math.random()*backgroundImages.length))
   const [boosterPackaging, setBoosterPackaging] = useState(false);
   const [code, setCode] = useState('');
+  const specialSets = ['mb1'];
 
   function updateShowcase({ cards, tokens = [], promos = [], masterpieces = [] }) {
     const lands = cards.filter(card => card.rarity === "common" && card.type_line.includes('Land'))
@@ -29,6 +31,21 @@ function App() {
     const mythics = cards.filter(card => card.rarity === "mythic");
     setCards({ tokens, promos, lands, commons, uncommons, rares, mythics, masterpieces})
     commons[0] && setCode(commons[0].set)
+    if(commons[0] && specialSets.includes(commons[0].set)){
+      //Filtering for mystery booster 1
+      if (commons[0].set === 'mb1'){
+        const white = cards.filter(card => (card.colors.includes('W') && card.colors.length === 1) && (card.rarity === "common" || card.rarity === "uncommon") && card.frame === '2015')
+        const blue = cards.filter(card => (card.colors.includes('U') && card.colors.length === 1) && (card.rarity === "common" || card.rarity === "uncommon") && card.frame === '2015')
+        const black = cards.filter(card => (card.colors.includes('B') && card.colors.length === 1) && (card.rarity === "common" || card.rarity === "uncommon") && card.frame === '2015')
+        const red = cards.filter(card => (card.colors.includes('R') && card.colors.length === 1) && (card.rarity === "common" || card.rarity === "uncommon") && card.frame === '2015')
+        const green = cards.filter(card => (card.colors.includes('G') && card.colors.length === 1) && (card.rarity === "common" || card.rarity === "uncommon") && card.frame === '2015')
+        const multicolored = cards.filter(card => (card.colors.length > 1) && (card.rarity === "common" || card.rarity === "uncommon") && card.frame === '2015')
+        const artifactAndLand = cards.filter(card => (card.type_line.includes('Land') || card.type_line.includes('Artifact')) && (card.rarity === "common" || card.rarity === "uncommon") && card.frame === '2015')
+        const preM15 = cards.filter(card=>card.frame !== "2015");
+        const postM15 = cards.filter(card => (card.rarity === "rare" || card.rarity === "mythic") && card.frame === '2015')
+        setSpecialSetCards({ white, black, green, red, blue, multicolored, artifactAndLand, preM15, postM15, promos })
+      }
+    }
   }
 
   function toggleBoosterPackaging(event){
@@ -84,6 +101,54 @@ function App() {
 
 
       return pack
+    }
+
+    function makeSpecialPack() {
+      if(code === 'mb1'){
+        const pack = [];
+        // 2 White commons or uncommons
+        // 2 Blue commons or uncommons
+        // 2 Black commons or uncommons
+        // 2 Red commons or uncommons
+        // 2 Green commons or uncommons
+        // 1 Multicolored common or uncommon
+        // 1 Artifact / land common or uncommon
+        // 1 Pre - M15 card
+        // 1 Post - M15 rare or mythic
+        // 1 Playtest card(if Convention Edition) or foil(if Store Edition)
+        const cardData = JSON.parse(JSON.stringify(specialSetCards))
+        pack.push(cardData.promos[Math.floor(Math.random() * cardData.promos.length)])
+        pack.push(cardData.postM15[Math.floor(Math.random() * cardData.postM15.length)])
+        pack.push(cardData.preM15[Math.floor(Math.random() * cardData.preM15.length)])
+        pack.push(cardData.artifactAndLand[Math.floor(Math.random() * cardData.artifactAndLand.length)])
+        pack.push(cardData.multicolored[Math.floor(Math.random() * cardData.multicolored.length)])
+        for (let i = 0; i < 2; i++) {
+          const index = Math.floor(Math.random() * cardData.green.length)
+          pack.push(cardData.green[index])
+          cardData.green.splice(index, 1)
+        }
+        for (let i = 0; i < 2; i++) {
+          const index = Math.floor(Math.random() * cardData.red.length)
+          pack.push(cardData.red[index])
+          cardData.red.splice(index, 1)
+        }
+        for (let i = 0; i < 2; i++) {
+          const index = Math.floor(Math.random() * cardData.black.length)
+          pack.push(cardData.black[index])
+          cardData.black.splice(index, 1)
+        }
+        for (let i = 0; i < 2; i++) {
+          const index = Math.floor(Math.random() * cardData.blue.length)
+          pack.push(cardData.blue[index])
+          cardData.blue.splice(index, 1)
+        }
+        for (let i = 0; i < 2; i++) {
+          const index = Math.floor(Math.random() * cardData.white.length)
+          pack.push(cardData.white[index])
+          cardData.white.splice(index, 1)
+        }
+        return pack
+      }
     }
 
     function generateCustomDeckObject(deckIndex, pack) {
@@ -286,7 +351,12 @@ function App() {
     if (cards.commons && cards.commons.length > 0) {
       const packs = []
       for (let i = 0; i < packCount; i++) {
-        packs.push(makePack())
+        if(specialSets.includes(code)){
+          console.log('packaging special pack')
+          packs.push(makeSpecialPack())
+        } else{
+          packs.push(makePack())
+        }
       }
 
 

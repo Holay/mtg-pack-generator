@@ -113,7 +113,8 @@ export const BOOSTER_ARTS = {
     vma: ['https://i.imgur.com/UlWqlQG.png', 'https://i.imgur.com/M6rIZqO.png'],
     kld: ['https://i.imgur.com/6ns7lYD.png', 'https://i.imgur.com/k1SnZAq.png'],
     aer: ['https://i.imgur.com/BjAHNwB.png', 'https://i.imgur.com/HdFxx2h.png'],
-    a25: ['https://i.imgur.com/H3n8jab.png']
+    a25: ['https://i.imgur.com/H3n8jab.png'],
+    mb1: ['https://i.imgur.com/ePqZNgF.png']
 
     
     

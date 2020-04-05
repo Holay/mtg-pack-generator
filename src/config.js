@@ -114,7 +114,8 @@ export const BOOSTER_ARTS = {
     kld: ['https://i.imgur.com/6ns7lYD.png', 'https://i.imgur.com/k1SnZAq.png'],
     aer: ['https://i.imgur.com/BjAHNwB.png', 'https://i.imgur.com/HdFxx2h.png'],
     a25: ['https://i.imgur.com/H3n8jab.png'],
-    mb1: ['https://i.imgur.com/ePqZNgF.png']
+    mb1: ['https://i.imgur.com/ePqZNgF.png'],
+    iko: ['https://i.imgur.com/s3uBzBR.png', 'https://i.imgur.com/ZWhkzJj.png', 'https://i.imgur.com/MbhwYkI.png', 'https://i.imgur.com/k0OdWFW.png']
 
     
     

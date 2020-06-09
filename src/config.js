@@ -1,8 +1,8 @@
 export const API_BASE_URL = "https://api.scryfall.com"
 
-export const CARD_BACK_URI = "https://www.frogtown.me/images/gatherer/CardBack.jpg"
+export const CARD_BACK_URI = "https://s3.amazonaws.com/frogtown.cards.hq/CardBack.jpg"
 
-export const TOKEN_CARD_BACK_URI = "https://cdn.discordapp.com/attachments/253343722568286208/665323928318640143/-553-hr.png"
+export const TOKEN_CARD_BACK_URI = "https://i.imgur.com/GKZjZVs.png"
 
 export const BOOSTER_ARTS = {
     akh: ['https://i.imgur.com/zRDZwGG.png', 'https://i.imgur.com/ncSkUsA.png', 'https://i.imgur.com/4VZ3eMo.png', 'https://i.imgur.com/EKGdzCj.png', 'https://i.imgur.com/UzDRDVi.png'],

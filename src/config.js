@@ -115,7 +115,8 @@ export const BOOSTER_ARTS = {
     aer: ['https://i.imgur.com/BjAHNwB.png', 'https://i.imgur.com/HdFxx2h.png'],
     a25: ['https://i.imgur.com/H3n8jab.png'],
     mb1: ['https://i.imgur.com/ePqZNgF.png'],
-    iko: ['https://i.imgur.com/s3uBzBR.png', 'https://i.imgur.com/ZWhkzJj.png', 'https://i.imgur.com/MbhwYkI.png', 'https://i.imgur.com/k0OdWFW.png']
+    iko: ['https://i.imgur.com/s3uBzBR.png', 'https://i.imgur.com/ZWhkzJj.png', 'https://i.imgur.com/MbhwYkI.png', 'https://i.imgur.com/k0OdWFW.png'],
+    m21: ['https://i.imgur.com/S1cOF9i.png', 'https://i.imgur.com/LKevS2s.png', 'https://i.imgur.com/OXmGYuW.png']
 
     
     

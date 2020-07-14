@@ -19,7 +19,7 @@ function App() {
   const [packCount, setPackCount] = useState(12)
   const [draftPacks, setDraftPacks] = useState("")
   const [imageIndex, setImageIndex] = useState(Math.floor(Math.random()*backgroundImages.length))
-  const [boosterPackaging, setBoosterPackaging] = useState(false);
+  const [boosterPackaging, setBoosterPackaging] = useState(true);
   const [code, setCode] = useState('');
   const specialSets = ['mb1'];
 

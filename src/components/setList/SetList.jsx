@@ -20,7 +20,7 @@ const SetList = ({ onSearch }) => {
     const [specialCards, setSpecialCards] = useState([])
     const allowedSetTypes = ['core', 'expansion', 'masters', 'draft_innovation'];
     const allowedSpecialSets = ['mb1'];
-    const removedFromList = ['fmb1'];
+    const removedFromList = ['fmb1', 'ren'];
 
 
     // Similar to componentDidMount and componentDidUpdate:
@@ -74,7 +74,9 @@ const SetList = ({ onSearch }) => {
             await fetchSpecials()
         }
         fetch(url).then(response => response.json()).then(response => {
-            setCards({cards: [...cleanedData, ...response.data], nextPage: response.next_page})
+
+            
+            setCards({ cards: [...cleanedData, ...response.data.filter(card => card.lang === 'en')], nextPage: response.next_page})
         }).catch(error=>console.log(error))
     }
     async function fetchSpecials(){

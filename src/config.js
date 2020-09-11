@@ -6,6 +6,7 @@ export const TOKEN_CARD_BACK_URI = "https://i.imgur.com/GKZjZVs.png"
 
 export const BOOSTER_ARTS = {
     akh: ['https://i.imgur.com/zRDZwGG.png', 'https://i.imgur.com/ncSkUsA.png', 'https://i.imgur.com/4VZ3eMo.png', 'https://i.imgur.com/EKGdzCj.png', 'https://i.imgur.com/UzDRDVi.png'],
+    akr: ['https://i.imgur.com/zRDZwGG.png', 'https://i.imgur.com/ncSkUsA.png', 'https://i.imgur.com/4VZ3eMo.png', 'https://i.imgur.com/EKGdzCj.png', 'https://i.imgur.com/UzDRDVi.png'],
     hou: ['https://i.imgur.com/uztmaPP.png', 'https://i.imgur.com/boVNhYi.png', 'https://i.imgur.com/AsNZMIV.png', 'https://i.imgur.com/QAZX0xz.png', 'https://i.imgur.com/nc7btWJ.png'],
     mh1: ['https://i.imgur.com/hNfRvap.png', 'https://i.imgur.com/R5nyVbP.png', 'https://i.imgur.com/Utpizyw.png'],
     xln: ['https://i.imgur.com/WsJPATh.png', 'https://i.imgur.com/do2BqoI.png', 'https://i.imgur.com/CUcLydg.png', 'https://i.imgur.com/qlQtwed.png', 'https://i.imgur.com/LGoIHEY.png'],
@@ -116,7 +117,8 @@ export const BOOSTER_ARTS = {
     a25: ['https://i.imgur.com/H3n8jab.png'],
     mb1: ['https://i.imgur.com/ePqZNgF.png'],
     iko: ['https://i.imgur.com/s3uBzBR.png', 'https://i.imgur.com/ZWhkzJj.png', 'https://i.imgur.com/MbhwYkI.png', 'https://i.imgur.com/k0OdWFW.png'],
-    m21: ['https://i.imgur.com/S1cOF9i.png', 'https://i.imgur.com/LKevS2s.png', 'https://i.imgur.com/OXmGYuW.png']
+    m21: ['https://i.imgur.com/S1cOF9i.png', 'https://i.imgur.com/LKevS2s.png', 'https://i.imgur.com/OXmGYuW.png'],
+    znr: ['https://i.imgur.com/iQNIacv.png', 'https://i.imgur.com/WrqzTn9.png','https://i.imgur.com/I1MTTbw.png']
 
     
     

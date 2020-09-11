@@ -6,7 +6,6 @@ import { CARD_BACK_URI, TOKEN_CARD_BACK_URI, BOOSTER_ARTS } from "./config"
 function App() {
 
   const backgroundImages = [
-    'https://www.desktophut.com/wp-content/uploads/2018/10/mtg-core-2019.jpg',
     'https://external-preview.redd.it/jkg8pUW3tb-io-83uQU46VJLQlC92ZAvEpbPlUDU-co.jpg?auto=webp&s=822151ad423474960358232e132a9f91d2ccef60',
     'https://images8.alphacoders.com/943/943285.jpg',
     'https://wallpapercave.com/wp/wp4579177.jpg',

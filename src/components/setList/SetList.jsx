@@ -20,7 +20,7 @@ const SetList = ({ onSearch }) => {
     const [specialCards, setSpecialCards] = useState([])
     const allowedSetTypes = ['core', 'expansion', 'masters', 'draft_innovation'];
     const allowedSpecialSets = ['mb1'];
-    const removedFromList = ['fmb1', 'ren'];
+    const removedFromList = ['fmb1', 'ren', 'cmr'];
 
 
     // Similar to componentDidMount and componentDidUpdate:

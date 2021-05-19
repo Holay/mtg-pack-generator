@@ -119,8 +119,7 @@ export const BOOSTER_ARTS = {
   iko: ['https://i.imgur.com/s3uBzBR.png', 'https://i.imgur.com/ZWhkzJj.png', 'https://i.imgur.com/MbhwYkI.png', 'https://i.imgur.com/k0OdWFW.png'],
   m21: ['https://i.imgur.com/S1cOF9i.png', 'https://i.imgur.com/LKevS2s.png', 'https://i.imgur.com/OXmGYuW.png'],
   znr: ['https://i.imgur.com/iQNIacv.png', 'https://i.imgur.com/WrqzTn9.png', 'https://i.imgur.com/I1MTTbw.png'],
-  khm: ['https://i.imgur.com/txY0DnA.png', 'https://i.imgur.com/dqITFAO.png', 'https://i.imgur.com/HMJwSS4.png', 'https://i.imgur.com/8dOokeV.png']
-
-
+  khm: ['https://i.imgur.com/txY0DnA.png', 'https://i.imgur.com/dqITFAO.png', 'https://i.imgur.com/HMJwSS4.png', 'https://i.imgur.com/8dOokeV.png'],
+  stx: ['https://imgur.com/dzwWkKj', 'https://imgur.com/MDs10oK', 'https://imgur.com/fsbFroX', 'https://imgur.com/9xB8VRN', 'https://imgur.com/JW6wvPX']
 
 }; 

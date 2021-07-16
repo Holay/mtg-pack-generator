@@ -1,6 +1,6 @@
 export const API_BASE_URL = "https://api.scryfall.com"
 
-export const CARD_BACK_URI = "https://s3.amazonaws.com/frogtown.cards.hq/CardBack.jpg"
+export const CARD_BACK_URI = "https://i.imgur.com/ygYsrEI.jpg"
 
 export const TOKEN_CARD_BACK_URI = "https://i.imgur.com/GKZjZVs.png"
 
@@ -120,6 +120,7 @@ export const BOOSTER_ARTS = {
   m21: ['https://i.imgur.com/S1cOF9i.png', 'https://i.imgur.com/LKevS2s.png', 'https://i.imgur.com/OXmGYuW.png'],
   znr: ['https://i.imgur.com/iQNIacv.png', 'https://i.imgur.com/WrqzTn9.png', 'https://i.imgur.com/I1MTTbw.png'],
   khm: ['https://i.imgur.com/txY0DnA.png', 'https://i.imgur.com/dqITFAO.png', 'https://i.imgur.com/HMJwSS4.png', 'https://i.imgur.com/8dOokeV.png'],
-  stx: ['https://imgur.com/dzwWkKj', 'https://imgur.com/MDs10oK', 'https://imgur.com/fsbFroX', 'https://imgur.com/9xB8VRN', 'https://imgur.com/JW6wvPX']
+  stx: ['https://imgur.com/dzwWkKj', 'https://imgur.com/MDs10oK', 'https://imgur.com/fsbFroX', 'https://imgur.com/9xB8VRN', 'https://imgur.com/JW6wvPX'],
+  afr: ['https://i.imgur.com/aoxiVmL.png', 'https://i.imgur.com/wbOLpec.png', 'https://i.imgur.com/PQR9n5W.png', 'https://i.imgur.com/WvXFbJr.png']
 
 }; 

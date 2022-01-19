@@ -121,6 +121,10 @@ export const BOOSTER_ARTS = {
   znr: ['https://i.imgur.com/iQNIacv.png', 'https://i.imgur.com/WrqzTn9.png', 'https://i.imgur.com/I1MTTbw.png'],
   khm: ['https://i.imgur.com/txY0DnA.png', 'https://i.imgur.com/dqITFAO.png', 'https://i.imgur.com/HMJwSS4.png', 'https://i.imgur.com/8dOokeV.png'],
   stx: ['https://imgur.com/dzwWkKj', 'https://imgur.com/MDs10oK', 'https://imgur.com/fsbFroX', 'https://imgur.com/9xB8VRN', 'https://imgur.com/JW6wvPX'],
-  afr: ['https://i.imgur.com/aoxiVmL.png', 'https://i.imgur.com/wbOLpec.png', 'https://i.imgur.com/PQR9n5W.png', 'https://i.imgur.com/WvXFbJr.png']
+  afr: ['https://i.imgur.com/aoxiVmL.png', 'https://i.imgur.com/wbOLpec.png', 'https://i.imgur.com/PQR9n5W.png', 'https://i.imgur.com/WvXFbJr.png'],
+  mh2: ['https://i.imgur.com/V7UlQ5T.png', 'https://i.imgur.com/k0l1Mrm.png', 'https://i.imgur.com/fdtjZg9.png'],
+  vow: ['https://i.imgur.com/S3v5ZVd.png'],
+  mid: ['https://i.imgur.com/uLq26kn.png'],
+  neo: ['https://i.imgur.com/r7Qykyr.png']
 
 }; 

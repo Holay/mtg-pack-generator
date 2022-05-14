@@ -270,6 +270,7 @@ function App() {
 
       }))
       if(boosterPackaging){
+        const setName = cards.commons[0].set_name;
         return TTSPacks.map((pack, index)=>(
           {
             Name: 'Custom_Model_Bag',
@@ -284,8 +285,8 @@ function App() {
               scaleY: 1,
               scaleZ: 1,
             },
-            Nickname: "",
-            Description: "",
+            Nickname: setName,
+            Description: `${setName} booster pack`,
             GMNotes: "",
             ColorDiffuse: {
               r: 1.0,

@@ -9,7 +9,7 @@ const selectStyle ={
     fontFamily: 'Open Sans',
 }
 
-
+/* eslint-disable */
 const SetList = ({ onSearch }) => {
     const [sets, setSets] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -120,3 +120,4 @@ const SetList = ({ onSearch }) => {
 }
 
 export default SetList;
+/* eslint-enable */

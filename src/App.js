@@ -17,7 +17,7 @@ function App() {
   const [specialSetCards, setSpecialSetCards] = useState({})
   const [packCount, setPackCount] = useState(12)
   const [draftPacks, setDraftPacks] = useState("")
-  const [imageIndex, setImageIndex] = useState(Math.floor(Math.random()*backgroundImages.length))
+  const [imageIndex] = useState(Math.floor(Math.random()*backgroundImages.length))
   const [boosterPackaging, setBoosterPackaging] = useState(true);
   const [code, setCode] = useState('');
   const specialSets = ['mb1'];
@@ -365,10 +365,6 @@ function App() {
     }
 
   }, [cards])
-
-  useEffect(() => {
-
-  }, [draftPacks])
 
   function updatePackCount(newCount) {
     setPackCount(newCount)

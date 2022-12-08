@@ -17,7 +17,7 @@ const StickyNav = ({ packCount, updatePackCount, toggleBoosterPackaging, booster
       <div className="controls-container">
         <div>
           <input type="checkbox" id="packaging" name="packaging"
-            onChange={toggleBoosterPackaging} checked={boosterPackaging} />
+          onChange={toggleBoosterPackaging} checked={boosterPackaging} />
           <label htmlFor="packaging" className="toggle-label">Toggle Booster Packaging</label>
         </div>
         <div>

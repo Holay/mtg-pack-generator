@@ -1,7 +1,6 @@
 import React from 'react';
 import "./StickyNav.scss"
 import holayLogo from "../../Holay.png";
-import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const StickyNav = ({ packCount, updatePackCount, toggleBoosterPackaging, boosterPackaging }) => {
   const numberArray = []

@@ -13,7 +13,7 @@ const StickyNav = ({ packCount, updatePackCount, toggleBoosterPackaging, booster
   return (
     <div className="nav">
       <div><img className="holay-logo" src={holayLogo} alt="Holay"></img></div>
-      <div className="made-by-me">Made by Mateo Penagos (<a href="https://steamcommunity.com/id/holay/" target="_blank" rel="noopener noreferrer">holay</a>). <span style={{ marginLeft: '5px' }}>If you wish to donate, you can do so <a style={{ textDecoration: 'underline' }} href="https://www.paypal.me/holay63" target="_blank" rel="noopener noreferrer">here</a></span></div>
+      <div className="made-by-me">Made by holay (<a href="https://steamcommunity.com/id/holay/" target="_blank" rel="noopener noreferrer">holay</a>). <span style={{ marginLeft: '5px' }}>If you wish to donate, you can do so <a style={{ textDecoration: 'underline' }} href="https://www.paypal.me/holay63" target="_blank" rel="noopener noreferrer">here</a></span></div>
       <div className="controls-container">
         <div>
           <input type="checkbox" id="packaging" name="packaging"
